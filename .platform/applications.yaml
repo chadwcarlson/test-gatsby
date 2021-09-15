@@ -22,11 +22,9 @@
                 allow: true
     source:
         operations:
-            update:
-                command: .platform/updates/test.sh
             update-dependencies:
-                command: .platform/updates/dependencies.sh
+                command: .platform/source-operations/dependencies.sh
             update-infrastructure:
-                command: .platform/updates/infrastructure.sh
+                command: .platform/source-operations/infrastructure.sh
             update-upstream:
-                command: .platform/updates/upstream.sh
+                command: .platform/source-operations/upstream.sh
