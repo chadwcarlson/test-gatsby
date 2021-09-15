@@ -6,7 +6,7 @@ set -e
 echo "- Retrieving upstream."
 git remote add upstream $UPSTREAM_REMOTE       
 git fetch --all
-git merge --allow-unrelated-histories -X theirs --squash upstream/master
+git merge --allow-unrelated-histories -X ours upstream/master
 
 # Modify upstream.
 echo "- Modifying upstream."
