@@ -1,0 +1,32 @@
+-   name: 'app'
+    type: 'nodejs:14'
+    variables:
+        env:
+            UPSTREAM_REMOTE: "https://github.com/gatsbyjs/gatsby-starter-blog.git" 
+    dependencies:
+        nodejs:
+            yarn: "1.22.5"
+    build:
+        flavor: none
+    hooks:
+        build: |
+            set -e
+            yarn --ignore-optional --frozen-lockfile 
+            yarn build
+    web:
+        locations:
+            '/':
+                root: 'public'
+                index: ['index.html']
+                scripts: false
+                allow: true
+    source:
+        operations:
+            update:
+                command: .platform/updates/test.sh
+            update-dependencies:
+                command: .platform/updates/dependencies.sh
+            update-infrastructure:
+                command: .platform/updates/infrastructure.sh
+            update-upstream:
+                command: .platform/updates/upstream.sh
